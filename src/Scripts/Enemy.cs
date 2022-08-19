@@ -38,6 +38,8 @@ public class Enemy : KinematicBody2D
             return;
         }
 
+        _velocity = Vector2.Zero;
+
         Node2D other = (Node2D)collision.Collider;
 
         if (other.IsInGroup("Slash")) 
