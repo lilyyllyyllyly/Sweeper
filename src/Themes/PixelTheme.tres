@@ -1,0 +1,65 @@
+[gd_resource type="Theme" load_steps=11 format=2]
+
+[ext_resource path="res://Fonts/VCR_OSD_MONO_96.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Sprites/UI/Button/button_press.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/UI/Button/button.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/UI/Button/button_disable.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/UI/Button/button_focus.png" type="Texture" id=5]
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 128, 128 )
+margin_left = 28.0
+margin_right = 28.0
+margin_top = 28.0
+margin_bottom = 28.0
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 128, 128 )
+margin_left = 28.0
+margin_right = 28.0
+margin_top = 15.0
+margin_bottom = 28.0
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 128, 128 )
+margin_left = 28.0
+margin_right = 28.0
+margin_top = 15.0
+margin_bottom = 28.0
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 128, 128 )
+margin_left = 28.0
+margin_right = 28.0
+margin_top = 28.0
+margin_bottom = 28.0
+
+[resource]
+default_font = ExtResource( 1 )
+Button/styles/disabled = SubResource( 5 )
+Button/styles/focus = SubResource( 6 )
+Button/styles/hover = SubResource( 4 )
+Button/styles/normal = SubResource( 2 )
+Button/styles/pressed = SubResource( 3 )
+CheckBox/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+CheckBox/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+CheckBox/colors/font_color_focus = Color( 0.94, 0.94, 0.94, 1 )
+CheckBox/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+CheckBox/colors/font_color_hover_pressed = Color( 1, 1, 1, 1 )
+CheckBox/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+CheckBox/constants/check_vadjust = 0
+CheckBox/constants/hseparation = 4
+CheckBox/icons/checked = null
+CheckBox/icons/checked_disabled = null
+CheckBox/icons/radio_checked = null
+CheckBox/icons/radio_checked_disabled = null
+CheckBox/icons/radio_unchecked = null
+CheckBox/icons/radio_unchecked_disabled = null
+CheckBox/icons/unchecked = null
+CheckBox/icons/unchecked_disabled = null
