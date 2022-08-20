@@ -10,6 +10,18 @@ public class Slash : KinematicBody2D
     [Export] public float speed = 600;
     [Export] public float deacel = 0;
 
+    [Export] public int charge = 0;
+    [Export] private float[] _chargeSize;
+    [Export] private float[] _chargeSpeed;
+    [Export] private float[] _chargeDeacel;
+
+    public void SetChargeVars()
+    {
+        Scale = new Vector2(_chargeSize[charge], _chargeSize[charge]);
+        speed = _chargeSpeed[charge];
+        deacel = _chargeDeacel[charge];
+    }
+
     public override void _Process(float delta)
     {
         _timePassed += delta;

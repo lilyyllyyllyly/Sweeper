@@ -247,7 +247,6 @@ tile_data = PoolIntArray( -393226, 44, 327687, -393225, 44, 327687, -393224, 44,
 rotation = -0.00348404
 _rotationOffset = 90.0
 _targetPath = NodePath("../Player")
-slashPos = Vector2( 100, 0 )
 
 [node name="Spiders" type="Node2D" parent="."]
 

@@ -153,6 +153,9 @@ __meta__ = {
 "_edit_group_": true
 }
 _slashScene = ExtResource( 4 )
+slashPos = Vector2( 100, 0 )
+_timeToMedCharge = 1.0
+_timeToFullCharge = 2.5
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = 0.785398

@@ -16,6 +16,9 @@ public class Broom : Node2D
     [Export] private PackedScene _slashScene;
     [Export] private Vector2 slashPos; // Relative to broom's position
 
+    [Export] private float _timeToMedCharge;
+    [Export] private float _timeToFullCharge;
+
     public override void _Ready()
     {
         Initialize();
@@ -72,36 +75,28 @@ public class Broom : Node2D
 
         Node newSlash = _slashScene.Instance();
         GetTree().CurrentScene.AddChild(newSlash);
-
-        // Resizing and Rotating
-
-        float slashSize = 0.75f;
-        int currCharge = 1;
-
-        if (_charge > 1) 
-        {
-            currCharge = 2;
-            slashSize = 1.25f;
-        }
-        if (_charge > 2.5f) 
-        {
-            currCharge = 3;
-            slashSize = 2f;
-        }
-
         Node2D slashNode = newSlash.GetNode<Node2D>(".");
+        Slash slash = newSlash.GetNode<Slash>(".");
 
-        slashNode.Scale = new Vector2(slashSize, slashSize);
-        slashNode.Rotation = Utils.AngleBetweenPoints(Position, GetGlobalMousePosition(), 180);
+        // Passing Current Charge
 
-        // Repositioning
+        if (_charge > _timeToMedCharge) 
+        {
+            slash.charge = 1;
+        }
+        if (_charge > _timeToFullCharge) 
+        {
+            slash.charge = 2;
+        }
+
+        slash.SetChargeVars();
+
+        // Repositioning and Rotating
 
         float rot = Rotation + Mathf.Deg2Rad(_rotationOffset);
         Vector2 rotatedPos = Utils.RotateVector(slashPos, rot);
         slashNode.Position = Position + rotatedPos;
-
-        newSlash.GetNode<Slash>(".").speed *= currCharge;
-        newSlash.GetNode<Slash>(".").deacel *= currCharge;
+        slashNode.Rotation = Utils.AngleBetweenPoints(Position, GetGlobalMousePosition(), 180);
     }
 
     private void Charge(float delta)
