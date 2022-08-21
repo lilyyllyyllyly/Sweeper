@@ -10,7 +10,7 @@ public class Enemy : KinematicBody2D
     private Vector2 _velocity;
     private Node2D _target;
 
-    [Export] private float _knockbackForce;
+    [Export] private float _knockbackMultiplier;
 
     [Export] private float _repelForce;
     private List<Area2D> repelAreas = new List<Area2D>();
@@ -45,8 +45,8 @@ public class Enemy : KinematicBody2D
         if (other.IsInGroup("Slash")) 
         {
             Slash slash = other.GetNode<Slash>(".");
-            Vector2 move = new Vector2(slash.speed, 0);
-            _velocity += Utils.RotateVector(move, slash.Rotation) * _knockbackForce;
+            Vector2 knockback = new Vector2(slash.knockbackForce, 0);
+            _velocity += Utils.RotateVector(knockback, slash.Rotation) * _knockbackMultiplier;
         }
         MoveAndCollide(_velocity * delta);
     }

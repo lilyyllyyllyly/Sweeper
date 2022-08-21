@@ -15,7 +15,7 @@ script = ExtResource( 2 )
 _acel = 50.0
 _deacel = 50.0
 _maxSpeed = 250.0
-_knockbackForce = 0.5
+_knockbackMultiplier = 1.0
 _repelForce = 30.0
 
 [node name="Sprite" type="Sprite" parent="."]

@@ -14,12 +14,16 @@ public class Slash : KinematicBody2D
     [Export] private float[] _chargeSize;
     [Export] private float[] _chargeSpeed;
     [Export] private float[] _chargeDeacel;
+    [Export] private float[] _chargeKnockback;
+
+    public float knockbackForce = 600;
 
     public void SetChargeVars()
     {
         Scale = new Vector2(_chargeSize[charge], _chargeSize[charge]);
         speed = _chargeSpeed[charge];
         deacel = _chargeDeacel[charge];
+        knockbackForce = _chargeKnockback[charge];
     }
 
     public override void _Process(float delta)
