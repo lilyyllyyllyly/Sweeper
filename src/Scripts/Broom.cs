@@ -74,9 +74,16 @@ public class Broom : Node2D
         // Instancing
 
         Node newSlash = _slashScene.Instance();
-        GetTree().CurrentScene.AddChild(newSlash);
         Node2D slashNode = newSlash.GetNode<Node2D>(".");
         Slash slash = newSlash.GetNode<Slash>(".");
+
+        // Rotating and Repositioning
+
+        slashNode.Rotation = Utils.AngleBetweenPoints(Position, GetGlobalMousePosition(), 180);
+
+        float rot = Rotation + Mathf.Deg2Rad(_rotationOffset);
+        Vector2 rotatedPos = Utils.RotateVector(slashPos, rot);
+        slashNode.Position = Position + rotatedPos;
 
         // Passing Current Charge
 
@@ -90,13 +97,9 @@ public class Broom : Node2D
         }
 
         slash.SetChargeVars();
+        
 
-        // Repositioning and Rotating
-
-        float rot = Rotation + Mathf.Deg2Rad(_rotationOffset);
-        Vector2 rotatedPos = Utils.RotateVector(slashPos, rot);
-        slashNode.Position = Position + rotatedPos;
-        slashNode.Rotation = Utils.AngleBetweenPoints(Position, GetGlobalMousePosition(), 180);
+        GetTree().CurrentScene.AddChild(newSlash);
     }
 
     private void Charge(float delta)
