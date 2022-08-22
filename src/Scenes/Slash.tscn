@@ -12,11 +12,11 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource( 2 )
 _lifetime = 0.2
-deacel = 5000.0
 _chargeSize = PoolRealArray( 0.75, 1.25, 2 )
 _chargeSpeed = PoolRealArray( 600, 1500, 2500 )
 _chargeDeacel = PoolRealArray( 5000, 12500, 17500 )
 _chargeKnockback = PoolRealArray( 600, 1200, 1800 )
+_chargeStun = PoolRealArray( 0.2, 0.35, 0.5 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 3, 3 )

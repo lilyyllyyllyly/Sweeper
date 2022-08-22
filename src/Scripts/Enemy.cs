@@ -7,6 +7,9 @@ public class Enemy : KinematicBody2D
     [Export] private float _acel;
     [Export] private float _deacel;
     [Export] private float _maxSpeed;
+    [Export(PropertyHint.Range, "0,1,0.05")]
+    private float _drag;
+    
     private Vector2 _velocity;
     private Node2D _target;
 
@@ -15,6 +18,7 @@ public class Enemy : KinematicBody2D
     [Export] private float _repelForce;
     private List<Area2D> repelAreas = new List<Area2D>();
 
+    private float stun = 0;
 
     public override void _Process(float delta)
     {
@@ -47,12 +51,21 @@ public class Enemy : KinematicBody2D
             Slash slash = other.GetNode<Slash>(".");
             Vector2 knockback = new Vector2(slash.knockbackForce, 0);
             _velocity += Utils.RotateVector(knockback, slash.Rotation) * _knockbackMultiplier;
+            stun = slash.stun;
         }
         MoveAndCollide(_velocity * delta);
     }
 
     private void CalculateMovement(float delta)
     {
+        _velocity -= _velocity * _drag;
+
+        if (stun > 0) 
+        {
+            stun -= delta;
+            return;
+        }
+
         // Calculating the movement direction
         Vector2 diff = Position - _target.Position;
         Vector2 heading = -diff.Normalized();
