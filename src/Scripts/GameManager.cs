@@ -13,7 +13,7 @@ public class GameManager : Node2D
         // Singleton
         if (instance != null) 
         {
-            GetTree().Free();
+            QueueFree();
             return;
         }
         instance = this;
