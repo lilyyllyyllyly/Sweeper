@@ -10,7 +10,7 @@ public class Enemy : KinematicBody2D
     [Export(PropertyHint.Range, "0,1,0.05")]
     private float _drag;
     
-    private Vector2 _velocity;
+    public Vector2 velocity;
     private Node2D _target;
 
     [Export] private float _knockbackMultiplier;
@@ -40,7 +40,7 @@ public class Enemy : KinematicBody2D
         }
 
         Repel();
-        Collision(MoveAndCollide(_velocity * delta), delta);
+        Collision(MoveAndCollide(velocity * delta), delta);
     }
 
     private void Collision(KinematicCollision2D collision, float delta)
@@ -50,7 +50,7 @@ public class Enemy : KinematicBody2D
             return;
         }
 
-        _velocity = Vector2.Zero;
+        velocity = Vector2.Zero;
 
         Node2D other = (Node2D)collision.Collider;
 
@@ -58,7 +58,7 @@ public class Enemy : KinematicBody2D
         {
             Slash slash = other.GetNode<Slash>(".");
             Vector2 knockback = new Vector2(slash.knockbackForce, 0);
-            _velocity += Utils.RotateVector(knockback, slash.Rotation) * _knockbackMultiplier;
+            velocity += Utils.RotateVector(knockback, slash.Rotation) * _knockbackMultiplier;
             stun = slash.stun;
             nextDmg = slash.charge + 1;
         }
@@ -68,7 +68,7 @@ public class Enemy : KinematicBody2D
             nextDmg = 0;
         }
 
-        MoveAndCollide(_velocity * delta);
+        MoveAndSlide(velocity * delta);
     }
 
     private void Damage(int dmg)
@@ -89,7 +89,7 @@ public class Enemy : KinematicBody2D
 
     private void CalculateMovement(float delta)
     {
-        _velocity -= _velocity * _drag;
+        velocity -= velocity * _drag;
 
         if (stun > 0) 
         {
@@ -104,13 +104,13 @@ public class Enemy : KinematicBody2D
         // Calculating the change that will be applied to the velocity
         Vector2 velocityChange = Vector2.Zero;
         velocityChange += heading * _acel;
-        Vector2 newVelocity = velocityChange + _velocity;
+        Vector2 newVelocity = velocityChange + velocity;
         if (newVelocity.Length() > _maxSpeed) 
         {
-            velocityChange -= _velocity.Normalized() * _deacel;
+            velocityChange -= velocity.Normalized() * _deacel;
         }
 
-        _velocity += velocityChange;
+        velocity += velocityChange;
     }
 
     private void Repel() 
@@ -118,7 +118,7 @@ public class Enemy : KinematicBody2D
         foreach (Area2D area in repelAreas) 
         {
             Vector2 repelDirection = (Position - area.GlobalPosition).Normalized();
-            _velocity += repelDirection * _repelForce;
+            velocity += repelDirection * _repelForce;
         }
     }
 

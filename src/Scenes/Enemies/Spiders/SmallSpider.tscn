@@ -10,7 +10,7 @@ radius = 10.0499
 
 [node name="SmallSpider" type="KinematicBody2D"]
 collision_layer = 4
-collision_mask = 10
+collision_mask = 26
 script = ExtResource( 2 )
 _acel = 50.0
 _deacel = 50.0

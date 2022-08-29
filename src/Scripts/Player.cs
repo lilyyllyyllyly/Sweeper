@@ -5,6 +5,10 @@ public class Player : KinematicBody2D
 {
     [Export] public int speed = 400;
     public bool isMoving = false;
+    private Vector2 _otherForces;
+    [Export] private float _forcesCap;
+    [Export(PropertyHint.Range, "0,1,0.05")] private float _drag;
+    [Export] private float _kbMultiplier;
     
     public AnimationPlayer anim;
     public Sprite sprite;
@@ -54,6 +58,19 @@ public class Player : KinematicBody2D
 
         isMoving = moveDir.Length() != 0;
 
-        MoveAndSlide(moveDir.Normalized() * speed);
+        _otherForces.x = Mathf.Clamp(_otherForces.x, -_forcesCap, _forcesCap);
+        _otherForces.y = Mathf.Clamp(_otherForces.y, -_forcesCap, _forcesCap);
+
+        MoveAndSlide(moveDir.Normalized() * speed + _otherForces);
+        _otherForces -= _otherForces * _drag;
+    }
+
+    private void OnHit(Node body) 
+    {
+        Enemy enemy = body.GetNode<Enemy>(".");
+        if (enemy != null) 
+        {
+            _otherForces += enemy.velocity * _kbMultiplier;
+        }
     }
 }
