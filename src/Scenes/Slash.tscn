@@ -9,7 +9,7 @@ height = 54.0
 
 [node name="Slash" type="KinematicBody2D" groups=["Slash"]]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 4
 script = ExtResource( 2 )
 _lifetime = 0.2
 _chargeSize = PoolRealArray( 0.75, 1.25, 2 )

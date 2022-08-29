@@ -1,16 +1,13 @@
 using Godot;
 using System;
 
-public class Player : Area2D
+public class Player : KinematicBody2D
 {
-    [Export]
-    public int speed = 400;
-    public Vector2 ScreenSize;
-
+    [Export] public int speed = 400;
+    public bool isMoving = false;
+    
     public AnimationPlayer anim;
     public Sprite sprite;
-
-    public bool isMoving = false;
 
     public override void _Ready()
     {
@@ -19,15 +16,18 @@ public class Player : Area2D
 
     private void Initialize()
     {
-        ScreenSize = GetViewportRect().Size;
         anim = GetNode<AnimationPlayer>("Sprite/AnimationPlayer");
         sprite = GetNode<Sprite>("Sprite");
     }
 
     public override void _Process(float delta)
     {
-        Move(delta);
         Animate();
+    }
+
+    public override void _PhysicsProcess(float delta)
+    {
+        Move(delta);
     }
 
     private void Animate()
@@ -51,9 +51,9 @@ public class Player : Area2D
             x : Convert.ToInt32(Input.IsActionPressed("move_right")) - Convert.ToInt32(Input.IsActionPressed("move_left")),
             y : Convert.ToInt32(Input.IsActionPressed("move_down" )) - Convert.ToInt32(Input.IsActionPressed("move_up"  ))
         );
-        
-        Position += moveDir.Normalized() * speed * delta;
 
         isMoving = moveDir.Length() != 0;
+
+        MoveAndSlide(moveDir.Normalized() * speed);
     }
 }
