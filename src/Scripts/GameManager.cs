@@ -17,6 +17,10 @@ public class GameManager : Node2D
             return;
         }
         instance = this;
+    }
+
+    public override void _EnterTree()
+    {
         Initialize();
     }
 

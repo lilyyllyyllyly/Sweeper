@@ -411,8 +411,10 @@ resource_local_to_scene = true
 9/z_index = 0
 
 [node name="Main" type="Node2D"]
+
+[node name="GameManager" type="Node2D" parent="."]
 script = ExtResource( 2 )
-_playerPath = NodePath("Player")
+_playerPath = NodePath("../Player")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
