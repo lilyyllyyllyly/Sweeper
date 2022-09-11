@@ -19,6 +19,7 @@ _drag = 0.1
 _knockbackMultiplier = 1.0
 _repelForce = 30.0
 _maxHealth = 1
+stingDmg = 0.5
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 3, 3 )

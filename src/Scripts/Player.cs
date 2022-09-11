@@ -13,6 +13,9 @@ public class Player : KinematicBody2D
     public AnimationPlayer anim;
     public Sprite sprite;
 
+    [Export] private float _maxPoison;
+    private float _poison;
+
     public override void _Ready()
     {
         Initialize();
@@ -71,6 +74,17 @@ public class Player : KinematicBody2D
         if (enemy != null) 
         {
             _otherForces += enemy.velocity * _kbMultiplier;
+            _poison += enemy.stingDmg;
+            if (_poison >= _maxPoison) 
+            {
+                Die();
+            }
         }
+    }
+
+    private void Die()
+    {
+        // Just like the enemy die function, this function exists for signals later.
+        GetTree().ChangeScene("res://Scenes/Title.tscn");
     }
 }

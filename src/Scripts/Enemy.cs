@@ -23,6 +23,8 @@ public class Enemy : KinematicBody2D
     public int hp;
     private int nextDmg;
 
+    [Export] public float stingDmg;
+
     public override void _Ready()
     {
         hp = _maxHealth;
