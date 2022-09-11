@@ -11,7 +11,7 @@ public class Enemy : KinematicBody2D
     private float _drag;
     
     public Vector2 velocity;
-    private Node2D _target;
+    public Node2D target;
 
     [Export] private float _knockbackMultiplier;
 
@@ -30,13 +30,9 @@ public class Enemy : KinematicBody2D
 
     public override void _Process(float delta)
     {
-        if (_target != null) 
+        if (IsInstanceValid(target)) 
         {
             CalculateMovement(delta);
-        }
-        else if (GameManager.instance.player != null)
-        {
-            _target = GameManager.instance.player;
         }
 
         Repel();
@@ -98,7 +94,7 @@ public class Enemy : KinematicBody2D
         }
 
         // Calculating the movement direction
-        Vector2 diff = Position - _target.Position;
+        Vector2 diff = Position - target.Position;
         Vector2 heading = -diff.Normalized();
 
         // Calculating the change that will be applied to the velocity
