@@ -76,6 +76,8 @@ quit_button={
 2d_physics/layer_1="Default"
 2d_physics/layer_2="Slash"
 2d_physics/layer_3="Enemy"
+2d_physics/layer_4="Wall"
+2d_physics/layer_5="Player Hitbox"
 
 [physics]
 
