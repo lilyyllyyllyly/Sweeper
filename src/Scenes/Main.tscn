@@ -434,6 +434,8 @@ tile_data = PoolIntArray( -393226, 44, 327687, -393225, 44, 327687, -393224, 44,
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 _maxPoison = 1.0
+_posionHeal = 0.2
+_maxHealDelay = 3.0
 
 [node name="Broom" parent="." instance=ExtResource( 3 )]
 rotation = -0.00348404
