@@ -415,6 +415,10 @@ resource_local_to_scene = true
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource( 2 )
 _playerPath = NodePath("../Player")
+_spawnTime = 5.0
+_hastenSpawnDelay = 17.5
+_spawnTimeReduction = 0.5
+_minimumSpawnTime = 0.1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -448,7 +452,15 @@ position = Vector2( 712, -138 )
 [node name="Spawner4" parent="." instance=ExtResource( 4 )]
 position = Vector2( -525, -139 )
 
+[connection signal="HastenSpawn" from="GameManager" to="Spawner" method="ChangeSpawnTime"]
+[connection signal="HastenSpawn" from="GameManager" to="Spawner2" method="ChangeSpawnTime"]
+[connection signal="HastenSpawn" from="GameManager" to="Spawner3" method="ChangeSpawnTime"]
+[connection signal="HastenSpawn" from="GameManager" to="Spawner4" method="ChangeSpawnTime"]
+[connection signal="SpanwerReady" from="Spawner" to="GameManager" method="OnSpawnerReady"]
 [connection signal="Spawned" from="Spawner" to="GameManager" method="OnEnemySpawn"]
+[connection signal="SpanwerReady" from="Spawner2" to="GameManager" method="OnSpawnerReady"]
 [connection signal="Spawned" from="Spawner2" to="GameManager" method="OnEnemySpawn"]
+[connection signal="SpanwerReady" from="Spawner3" to="GameManager" method="OnSpawnerReady"]
 [connection signal="Spawned" from="Spawner3" to="GameManager" method="OnEnemySpawn"]
+[connection signal="SpanwerReady" from="Spawner4" to="GameManager" method="OnSpawnerReady"]
 [connection signal="Spawned" from="Spawner4" to="GameManager" method="OnEnemySpawn"]

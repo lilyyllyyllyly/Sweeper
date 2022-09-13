@@ -8,6 +8,12 @@ public class Spawner : Node2D
     private float timeSinceSpawn;
 
     [Signal] public delegate void Spawned(Node2D enemy);
+    [Signal] public delegate void SpanwerReady(Spawner spawner);
+
+    public override void _Ready()
+    {
+        EmitSignal("SpanwerReady", this);
+    }
 
     public override void _Process(float delta)
     {
@@ -25,6 +31,11 @@ public class Spawner : Node2D
         GetTree().CurrentScene.AddChild(newEnemy);
         timeSinceSpawn = 0;
 
-        EmitSignal(nameof(Spawned), newEnemy);
+        EmitSignal("Spawned", newEnemy);
+    }
+
+    private void ChangeSpawnTime(float newTime) 
+    {
+        spawnTime = newTime;
     }
 }
