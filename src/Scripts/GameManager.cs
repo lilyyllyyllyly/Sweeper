@@ -14,6 +14,7 @@ public class GameManager : Node2D
     [Signal] public delegate void HastenSpawn(float newTime);
 
     public float score = 0;
+    [Signal] public delegate void ScoreUpdated(float newScore);
 
     public override void _EnterTree()
     {
@@ -51,6 +52,7 @@ public class GameManager : Node2D
     private void ChangeScore(float newValue)
     {
         score = newValue;
+        EmitSignal("ScoreUpdated", score);
     }
 
     private void OnSpawnerReady(Spawner spawner) 

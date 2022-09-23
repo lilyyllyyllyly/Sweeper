@@ -5,6 +5,8 @@
 [ext_resource path="res://Scenes/Broom.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Enemies/Spawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Sprites/Tilemaps/Tilemap_Yellow.png" type="Texture" id=5]
+[ext_resource path="res://Themes/PixelTheme.tres" type="Theme" id=6]
+[ext_resource path="res://Scripts/Score.cs" type="Script" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=61]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -412,6 +414,19 @@ resource_local_to_scene = true
 
 [node name="Main" type="Node2D"]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 8
+follow_viewport_enable = true
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+margin_left = -111.0
+margin_top = -554.0
+margin_right = -1.0
+margin_bottom = -438.0
+theme = ExtResource( 6 )
+text = "0"
+script = ExtResource( 7 )
+
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource( 2 )
 _playerPath = NodePath("../Player")
@@ -458,6 +473,7 @@ position = Vector2( -525, -139 )
 [connection signal="HastenSpawn" from="GameManager" to="Spawner2" method="ChangeSpawnTime"]
 [connection signal="HastenSpawn" from="GameManager" to="Spawner3" method="ChangeSpawnTime"]
 [connection signal="HastenSpawn" from="GameManager" to="Spawner4" method="ChangeSpawnTime"]
+[connection signal="ScoreUpdated" from="GameManager" to="CanvasLayer/Score" method="OnScoreUpdated"]
 [connection signal="SpanwerReady" from="Spawner" to="GameManager" method="OnSpawnerReady"]
 [connection signal="Spawned" from="Spawner" to="GameManager" method="OnEnemySpawn"]
 [connection signal="SpanwerReady" from="Spawner2" to="GameManager" method="OnSpawnerReady"]
