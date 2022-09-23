@@ -13,6 +13,8 @@ public class GameManager : Node2D
     [Export] private float _minimumSpawnTime;
     [Signal] public delegate void HastenSpawn(float newTime);
 
+    public float score = 0;
+
     public override void _EnterTree()
     {
         Initialize();
@@ -39,6 +41,16 @@ public class GameManager : Node2D
     {
         enemy.GetNode<Enemy>(".").target = player;
         enemy.GetNode<Enemy>(".").Connect("EnemyDie", this, "OnEnemyDie");
+    }
+
+    private void OnEnemyDie(Node2D enemy) 
+    {
+        ChangeScore(score + 1);
+    }
+
+    private void ChangeScore(float newValue)
+    {
+        score = newValue;
     }
 
     private void OnSpawnerReady(Spawner spawner) 

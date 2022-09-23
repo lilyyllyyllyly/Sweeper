@@ -25,6 +25,8 @@ public class Enemy : KinematicBody2D
 
     [Export] public float stingDmg;
 
+    [Signal] public delegate void EnemyDie(Node2D enemy);
+
     public override void _Ready()
     {
         hp = _maxHealth;
@@ -83,6 +85,7 @@ public class Enemy : KinematicBody2D
     private void Die()
     {
         QueueFree();
+        EmitSignal("EnemyDie", GetNode<Node2D>("."));
     }
 
     private void CalculateMovement(float delta)
