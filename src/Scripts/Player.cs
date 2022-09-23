@@ -13,14 +13,17 @@ public class Player : KinematicBody2D
     public AnimationPlayer anim;
     public Sprite sprite;
 
-    [Export] private float _maxPoison;
+    [Export] public float maxPoison;
     [Export] private float _posionHeal;
     [Export] private float _maxHealDelay;
     private float _healDelay;
-    private float _poison;
+    public float poison;
+
+    [Signal] public delegate void PlayerReady(Player player);
 
     public override void _Ready()
     {
+        EmitSignal("PlayerReady", this);
         Initialize();
     }
 
@@ -38,13 +41,13 @@ public class Player : KinematicBody2D
 
     private void Heal(float delta)
     {
-        _poison = Mathf.Clamp(_poison, 0, _maxPoison);
+        poison = Mathf.Clamp(poison, 0, maxPoison);
         if (_healDelay > 0) 
         {
             _healDelay -= delta;
             return;
         }
-        _poison -= _posionHeal * delta;
+        poison -= _posionHeal * delta;
     }
 
     public override void _PhysicsProcess(float delta)
@@ -89,9 +92,9 @@ public class Player : KinematicBody2D
         if (enemy != null) 
         {
             _otherForces += enemy.velocity * _kbMultiplier;
-            _poison += enemy.stingDmg;
+            poison += enemy.stingDmg;
             _healDelay = _maxHealDelay;
-            if (_poison >= _maxPoison) 
+            if (poison >= maxPoison) 
             {
                 Die();
             }
