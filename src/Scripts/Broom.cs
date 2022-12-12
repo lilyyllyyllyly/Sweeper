@@ -19,6 +19,9 @@ public class Broom : Node2D
     [Export] private float _timeToMedCharge;
     [Export] private float _timeToFullCharge;
 
+    [Export] private float _attackDelay;
+    private float _timeSinceAttack;
+
     public override void _Ready()
     {
         Initialize();
@@ -28,6 +31,7 @@ public class Broom : Node2D
     {
         _anim = GetNode<AnimationPlayer>("Sprite/AnimationPlayer");
         _target = GetNode<Node2D>(_targetPath);
+        _timeSinceAttack = _attackDelay;
     }
 
     public override void _Process(float delta)
@@ -45,14 +49,16 @@ public class Broom : Node2D
 
     private void Attack(float delta)
     {
-        if (Input.IsActionPressed("attack")) 
-        {
-            Charge(delta);
-        }
-        if (!Input.IsActionJustReleased("attack")) 
+        _timeSinceAttack += delta;
+        Charge(delta);
+        if (!Input.IsActionJustReleased("attack") || _timeSinceAttack < _attackDelay) 
         {
             return;
         }
+
+        // All of this only happens when the attack button is released and the attack delay passed:
+
+        _timeSinceAttack = 0;
 
         if (!_isFlipped) 
         {
