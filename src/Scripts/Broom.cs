@@ -106,6 +106,10 @@ public class Broom : Node2D
     {
         if (!Input.IsActionPressed("attack")) 
         {
+            if (_anim.CurrentAnimation == "Charge" || _anim.CurrentAnimation == "ChargeBack") 
+            {
+                _anim.Stop();
+            }
             return;
         }
 
