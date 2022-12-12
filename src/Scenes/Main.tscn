@@ -465,6 +465,7 @@ _maxHealDelay = 3.0
 rotation = -0.00348404
 _rotationOffset = 90.0
 _targetPath = NodePath("../Player")
+_attackDelay = 0.1
 
 [node name="Spawner" parent="." instance=ExtResource( 4 )]
 position = Vector2( -665, 230 )
