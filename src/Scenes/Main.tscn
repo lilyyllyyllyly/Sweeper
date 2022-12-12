@@ -417,21 +417,20 @@ resource_local_to_scene = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 8
-follow_viewport_enable = true
 
 [node name="PoisonBar" type="ProgressBar" parent="CanvasLayer"]
-margin_left = -871.0
-margin_top = -545.0
-margin_right = -180.0
-margin_bottom = -460.0
+margin_left = 27.0
+margin_top = 48.0
+margin_right = 718.0
+margin_bottom = 133.0
 theme = ExtResource( 6 )
 script = ExtResource( 8 )
 
 [node name="Score" type="Label" parent="CanvasLayer"]
-margin_left = -111.0
-margin_top = -554.0
-margin_right = -1.0
-margin_bottom = -438.0
+margin_left = 787.0
+margin_top = 39.0
+margin_right = 897.0
+margin_bottom = 155.0
 theme = ExtResource( 6 )
 text = "0"
 script = ExtResource( 7 )
