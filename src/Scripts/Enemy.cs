@@ -2,15 +2,8 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public class Enemy : KinematicBody2D
-{
-    [Export] private float _acel;
-    [Export] private float _deacel;
-    [Export] private float _maxSpeed;
-    [Export(PropertyHint.Range, "0,1,0.05")]
-    private float _drag;
-    
-    public Vector2 velocity;
+public class Enemy : Movable
+{    
     public Node2D target;
 
     [Export] private float _knockbackMultiplier;
@@ -29,18 +22,14 @@ public class Enemy : KinematicBody2D
 
     public override void _Ready()
     {
+        base._Ready();
         hp = _maxHealth;
     }
 
     public override void _Process(float delta)
     {
-        if (IsInstanceValid(target)) 
-        {
-            CalculateMovement(delta);
-        }
-
         Repel();
-        Collision(MoveAndCollide(velocity * delta), delta);
+        Collision(GetLastSlideCollision(), delta);
     }
 
     private void Collision(KinematicCollision2D collision, float delta)
@@ -86,32 +75,6 @@ public class Enemy : KinematicBody2D
     {
         QueueFree();
         EmitSignal("EnemyDie", GetNode<Node2D>("."));
-    }
-
-    private void CalculateMovement(float delta)
-    {
-        velocity -= velocity * _drag;
-
-        if (stun > 0) 
-        {
-            stun -= delta;
-            return;
-        }
-
-        // Calculating the movement direction
-        Vector2 diff = Position - target.Position;
-        Vector2 heading = -diff.Normalized();
-
-        // Calculating the change that will be applied to the velocity
-        Vector2 velocityChange = Vector2.Zero;
-        velocityChange += heading * _acel;
-        Vector2 newVelocity = velocityChange + velocity;
-        if (newVelocity.Length() > _maxSpeed) 
-        {
-            velocityChange -= velocity.Normalized() * _deacel;
-        }
-
-        velocity += velocityChange;
     }
 
     private void Repel() 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Sprites/Player/player-idle.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.cs" type="Script" id=2]
+[ext_resource path="res://Scripts/PlayerInput.cs" type="Script" id=3]
 
 [sub_resource type="Animation" id=2]
 resource_name = "Idle"
@@ -103,10 +104,13 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
-speed = 300
-_forcesCap = 1000.0
-_drag = 0.1
+_inputPath = NodePath("PlayerInput")
+_maxSpeed = 400.0
+_maxAccel = 50.0
 _kbMultiplier = 3.5
+maxPoison = 1.0
+_posionHeal = 0.2
+_maxHealDelay = 3.0
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 3, 3 )
@@ -131,5 +135,8 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2( 0, 20 )
 shape = SubResource( 5 )
+
+[node name="PlayerInput" type="Node" parent="."]
+script = ExtResource( 3 )
 
 [connection signal="body_entered" from="Hitbox" to="." method="OnHit"]
