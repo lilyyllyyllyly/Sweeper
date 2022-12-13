@@ -48,6 +48,16 @@ public class Enemy : Movable
         }
     }
 
+    private void SlashEntered(Area2D area) 
+    {
+        velocity = Vector2.Zero;
+        Slash slash = area.GetParent<Slash>();
+        Vector2 knockback = new Vector2(slash.knockbackForce, 0);
+        velocity += Utils.RotateVector(knockback, slash.Rotation) * _knockbackMultiplier;
+        stun = slash.stun;
+        nextDmg = slash.charge + 1;
+    }
+
     private void Collision(KinematicCollision2D collision, float delta)
     {
         if (collision == null) 
@@ -55,25 +65,11 @@ public class Enemy : Movable
             return;
         }
 
-        velocity = Vector2.Zero;
-
-        Node2D other = (Node2D)collision.Collider;
-
-        if (other.IsInGroup("Slash")) 
-        {
-            Slash slash = other.GetNode<Slash>(".");
-            Vector2 knockback = new Vector2(slash.knockbackForce, 0);
-            velocity += Utils.RotateVector(knockback, slash.Rotation) * _knockbackMultiplier;
-            stun = slash.stun;
-            nextDmg = slash.charge + 1;
-        }
-        else if (stun > 0) 
+        if (stun > 0) 
         {
             Damage(nextDmg > 0? nextDmg : 1);
             nextDmg = 0;
         }
-
-        MoveAndSlide(velocity * delta);
     }
 
     private void Damage(int dmg)

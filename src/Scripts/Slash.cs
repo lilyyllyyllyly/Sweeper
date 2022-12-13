@@ -2,7 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 
-public class Slash : KinematicBody2D
+public class Slash : Node2D
 {
     [Export] private float _lifetime = 1;
     private float _timePassed = 0;

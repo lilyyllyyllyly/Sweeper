@@ -7,9 +7,7 @@
 radius = 51.0
 height = 54.0
 
-[node name="Slash" type="KinematicBody2D" groups=["Slash"]]
-collision_layer = 2
-collision_mask = 4
+[node name="Slash" type="Node2D" groups=["Slash"]]
 script = ExtResource( 2 )
 _lifetime = 0.2
 _chargeSize = PoolRealArray( 0.75, 1.25, 2 )
@@ -22,7 +20,11 @@ _chargeStun = PoolRealArray( 0.07, 1.5, 3 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -59, 0 )
 rotation = 1.5708
 shape = SubResource( 1 )
