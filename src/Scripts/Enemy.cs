@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Enemy : Movable
 {    
     public Node2D target;
+    public Node2D player;
 
     [Export] private float _knockbackMultiplier;
 
@@ -28,8 +29,23 @@ public class Enemy : Movable
 
     public override void _Process(float delta)
     {
+        stun -= delta;
+
+        SetTarget();
         Repel();
         Collision(GetLastSlideCollision(), delta);
+    }
+
+    private void SetTarget()
+    {
+        if (!IsInstanceValid(target) && IsInstanceValid(player)) 
+        {
+            target = player;
+        }
+        else if (stun > 0)
+        {
+            target = null;
+        }
     }
 
     private void Collision(KinematicCollision2D collision, float delta)
