@@ -21,7 +21,7 @@ public class Movable : KinematicBody2D
         Move(delta);
     }
 
-    private void Move(float delta)
+    protected virtual void Move(float delta)
     {
         if (!IsInstanceValid((Node)_input)) 
         {

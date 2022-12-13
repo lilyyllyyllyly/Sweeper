@@ -16,6 +16,7 @@ script = ExtResource( 2 )
 _inputPath = NodePath("EnemyInput")
 _maxSpeed = 250.0
 _maxAccel = 25.0
+_navAgentPath = NodePath("NavigationAgent2D")
 _knockbackMultiplier = 1.0
 _repelForce = 30.0
 _maxHealth = 1
@@ -44,6 +45,8 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SlashCheck"]
 shape = SubResource( 1 )
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [connection signal="area_entered" from="RepelArea" to="." method="AddToRepel"]
 [connection signal="area_exited" from="RepelArea" to="." method="RemoveFromRepel"]

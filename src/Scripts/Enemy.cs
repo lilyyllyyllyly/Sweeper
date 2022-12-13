@@ -7,6 +7,9 @@ public class Enemy : Movable
     public Node2D target;
     public Node2D player;
 
+    public NavigationAgent2D navAgent;
+    [Export] private NodePath _navAgentPath;
+
     [Export] private float _knockbackMultiplier;
 
     [Export] private float _repelForce;
@@ -25,6 +28,12 @@ public class Enemy : Movable
     {
         base._Ready();
         hp = _maxHealth;
+        Initialize();
+    }
+
+    private void Initialize()
+    {
+        navAgent = GetNode<NavigationAgent2D>(_navAgentPath);
     }
 
     public override void _Process(float delta)
@@ -34,6 +43,12 @@ public class Enemy : Movable
         SetTarget();
         Repel();
         Collision(GetLastSlideCollision(), delta);
+    }
+
+    protected override void Move(float delta)
+    {
+        base.Move(delta);
+        navAgent.SetVelocity(velocity);
     }
 
     private void SetTarget()
@@ -46,6 +61,9 @@ public class Enemy : Movable
         {
             target = null;
         }
+
+        Vector2 targetPos = IsInstanceValid(target) ? target.Position : Position;
+        navAgent.SetTargetLocation(targetPos);
     }
 
     private void SlashEntered(Area2D area) 

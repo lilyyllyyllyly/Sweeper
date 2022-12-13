@@ -14,12 +14,7 @@ public class EnemyInput : Node, IInput
     {
         get 
         {
-            if (IsInstanceValid(_enemy.target)) 
-            {
-                Vector2 diff = _enemy.target.Position - _enemy.Position;
-                return diff.Normalized();
-            }
-            return Vector2.Zero;
+            return _enemy.Position.DirectionTo(_enemy.navAgent.GetNextLocation());
         }
     }
 }
