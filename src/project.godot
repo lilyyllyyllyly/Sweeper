@@ -20,6 +20,10 @@ window/size/height=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
+[global]
+
+layer=false
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
@@ -78,6 +82,7 @@ quit_button={
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Wall"
 2d_physics/layer_5="Player Hitbox"
+2d_physics/layer_6="Slash Check"
 
 [physics]
 
