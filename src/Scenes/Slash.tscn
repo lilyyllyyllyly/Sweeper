@@ -15,7 +15,7 @@ _lifetime = 0.2
 _chargeSize = PoolRealArray( 0.75, 1.25, 2 )
 _chargeSpeed = PoolRealArray( 600, 1500, 2500 )
 _chargeDeacel = PoolRealArray( 5000, 12500, 17500 )
-_chargeKnockback = PoolRealArray( 300, 1600, 2300 )
+_chargeKnockback = PoolRealArray( 150, 800, 1150 )
 _chargeStun = PoolRealArray( 0.07, 1.5, 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
