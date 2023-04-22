@@ -40,7 +40,6 @@ public class GameManager : Node2D
 
     private void OnEnemySpawn(Node2D enemy) 
     {
-        enemy.GetNode<Enemy>(".").target = player;
         enemy.GetNode<Enemy>(".").player = player;
         enemy.GetNode<Enemy>(".").Connect("EnemyDie", this, "OnEnemyDie");
     }
