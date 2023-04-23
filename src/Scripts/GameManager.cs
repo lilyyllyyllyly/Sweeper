@@ -112,6 +112,7 @@ public class GameManager : Node2D
     private void OnSpawnerDead(Spawner spawner)
     {
         _isPositionOccupied[spawner.index] = false;
+        ChangeScore(score + 100);
     }
 
     private void ChangeScore(float newValue)
