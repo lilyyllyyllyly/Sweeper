@@ -8,11 +8,17 @@ public class Spawner : Node2D
     private float timeSinceSpawn;
 
     [Signal] public delegate void Spawned(Node2D enemy);
-    [Signal] public delegate void SpanwerReady(Spawner spawner);
+    [Signal] public delegate void SpawnerDead(Spawner spawner);
+
+    public int index;
+
+    [Export] private int _maxHealth;
+    public int hp;
 
     public override void _Ready()
     {
-        EmitSignal("SpanwerReady", this);
+        base._Ready();
+        hp = _maxHealth;
     }
 
     public override void _Process(float delta)
@@ -34,8 +40,19 @@ public class Spawner : Node2D
         EmitSignal("Spawned", newEnemy);
     }
 
-    private void ChangeSpawnTime(float newTime) 
+    private void SlashEntered(Area2D area) 
     {
-        spawnTime = newTime;
+        hp--;
+
+        if (hp <= 0) 
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        QueueFree();
+        EmitSignal("SpawnerDead", this);
     }
 }

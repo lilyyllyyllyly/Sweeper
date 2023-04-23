@@ -704,10 +704,9 @@ script = ExtResource( 7 )
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource( 2 )
 _playerPath = NodePath("../Player")
-_spawnTime = 5.0
-_hastenSpawnDelay = 17.5
-_spawnTimeReduction = 0.5
-_minimumSpawnTime = 0.1
+_spawnerSpawnTime = 15.0
+_spawnerScene = ExtResource( 4 )
+_spawnerPositions = PoolVector2Array( -831, 298, 1438, 357, 1861, -638, -672, -339, 190, -574 )
 
 [node name="Props" type="TileMap" parent="."]
 scale = Vector2( 6, 6 )
@@ -740,32 +739,8 @@ _rotationOffset = 90.0
 _targetPath = NodePath("../Player")
 _attackDelay = 0.1
 
-[node name="Spawner" parent="." instance=ExtResource( 4 )]
-position = Vector2( -831, 298 )
-
-[node name="Spawner2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1438, 357 )
-
-[node name="Spawner3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1861, -638 )
-
-[node name="Spawner4" parent="." instance=ExtResource( 4 )]
-position = Vector2( -672, -339 )
-
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
 navpoly = SubResource( 70 )
 
-[connection signal="HastenSpawn" from="GameManager" to="Spawner" method="ChangeSpawnTime"]
-[connection signal="HastenSpawn" from="GameManager" to="Spawner2" method="ChangeSpawnTime"]
-[connection signal="HastenSpawn" from="GameManager" to="Spawner3" method="ChangeSpawnTime"]
-[connection signal="HastenSpawn" from="GameManager" to="Spawner4" method="ChangeSpawnTime"]
 [connection signal="ScoreUpdated" from="GameManager" to="CanvasLayer/Score" method="OnScoreUpdated"]
 [connection signal="PlayerReady" from="Player" to="CanvasLayer/PoisonBar" method="OnPlayerReady"]
-[connection signal="SpanwerReady" from="Spawner" to="GameManager" method="OnSpawnerReady"]
-[connection signal="Spawned" from="Spawner" to="GameManager" method="OnEnemySpawn"]
-[connection signal="SpanwerReady" from="Spawner2" to="GameManager" method="OnSpawnerReady"]
-[connection signal="Spawned" from="Spawner2" to="GameManager" method="OnEnemySpawn"]
-[connection signal="SpanwerReady" from="Spawner3" to="GameManager" method="OnSpawnerReady"]
-[connection signal="Spawned" from="Spawner3" to="GameManager" method="OnEnemySpawn"]
-[connection signal="SpanwerReady" from="Spawner4" to="GameManager" method="OnSpawnerReady"]
-[connection signal="Spawned" from="Spawner4" to="GameManager" method="OnEnemySpawn"]
