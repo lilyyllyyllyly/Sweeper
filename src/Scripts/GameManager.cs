@@ -12,12 +12,14 @@ public class GameManager : Node2D
     [Export] private PackedScene _spawnerScene;
     [Export] private Vector2[] _spawnerPositions;
     private bool[] _isPositionOccupied;
-    [Export] private int _spawnerNumber;
+    private int _spawnerNumber;
     private int _wave = 1;
 
     public float score = 0;
 
     [Signal] public delegate void ScoreUpdated(float newScore);
+    [Signal] public delegate void NewWave(int wave);
+    [Signal] public delegate void SpawnerNumberChanged(int spawners);
 
     public override void _EnterTree()
     {
@@ -33,12 +35,12 @@ public class GameManager : Node2D
     public override void _Ready()
     {
         base._Ready();
-        CallDeferred("TryCreateSpawner");
+        CallDeferred("TryCreateSpawner"); // Using CallDeferred to avoid errors from adding the spawner to the tree before it's ready
     }
 
     public override void _Process(float delta)
     {
-        _spawnerNumber = Mathf.Clamp(Mathf.CeilToInt(_wave/3f), 1, _spawnerPositions.Length);
+        _spawnerNumber = Mathf.Clamp(Mathf.CeilToInt(_wave/3f), 1, _spawnerPositions.Length); // Adding 1 spawner every 3 waves basically (i think its a bit wrong)
         _timeSinceNewSpawner += delta;
         if (_timeSinceNewSpawner >= _spawnerSpawnTime)
         {
@@ -48,6 +50,7 @@ public class GameManager : Node2D
             }
             _timeSinceNewSpawner = 0;
             _wave++;
+            EmitSignal("NewWave", _wave);
         }
     }
 
@@ -96,6 +99,8 @@ public class GameManager : Node2D
 
         // Adding spawner to the tree (VERY IMPORTANT, IT WILL NOT APPEAR OTHERWISE)
         GetTree().CurrentScene.AddChild(newSpawner);
+
+        EmitSignal("SpawnerNumberChanged", CountSpawners());
     }
 
     private void OnEnemySpawn(Node2D enemy) 
@@ -113,6 +118,21 @@ public class GameManager : Node2D
     {
         _isPositionOccupied[spawner.index] = false;
         ChangeScore(score + 100);
+
+        EmitSignal("SpawnerNumberChanged", CountSpawners());
+    }
+
+    private int CountSpawners()
+    {
+        int spawners = 0;
+        for (int i = 0; i < _isPositionOccupied.Length; i++)
+        {
+            if (_isPositionOccupied[i])
+            {
+                spawners++;
+            }
+        }
+        return spawners;
     }
 
     private void ChangeScore(float newValue)

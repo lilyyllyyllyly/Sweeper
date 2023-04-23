@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/GameManager.cs" type="Script" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Sprites/Props/Table.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/Props/TV.png" type="Texture" id=12]
 [ext_resource path="res://Sprites/Props/Bed.png" type="Texture" id=13]
+[ext_resource path="res://Scripts/Wave.cs" type="Script" id=14]
+[ext_resource path="res://Scripts/Cobwebs.cs" type="Script" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=101]
 points = PoolVector2Array( 18, 0, 126, 0, 128, 32, 16, 32 )
@@ -701,6 +703,28 @@ theme = ExtResource( 6 )
 text = "0"
 script = ExtResource( 7 )
 
+[node name="Wave" type="Label" parent="CanvasLayer"]
+margin_left = 1490.0
+margin_top = 875.0
+margin_right = 1902.0
+margin_bottom = 155.0
+grow_horizontal = 0
+theme = ExtResource( 6 )
+text = "Wave: 1"
+align = 2
+script = ExtResource( 14 )
+
+[node name="Cobwebs" type="Label" parent="CanvasLayer"]
+margin_left = 1490.0
+margin_top = 975.0
+margin_right = 1902.0
+margin_bottom = 271.0
+grow_horizontal = 0
+theme = ExtResource( 6 )
+text = "Cobwebs: 1"
+align = 2
+script = ExtResource( 15 )
+
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource( 2 )
 _playerPath = NodePath("../Player")
@@ -742,5 +766,7 @@ _attackDelay = 0.1
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
 navpoly = SubResource( 70 )
 
+[connection signal="NewWave" from="GameManager" to="CanvasLayer/Wave" method="OnNewWave"]
 [connection signal="ScoreUpdated" from="GameManager" to="CanvasLayer/Score" method="OnScoreUpdated"]
+[connection signal="SpawnerNumberChanged" from="GameManager" to="CanvasLayer/Cobwebs" method="OnSpawnerNumberChanged"]
 [connection signal="PlayerReady" from="Player" to="CanvasLayer/PoisonBar" method="OnPlayerReady"]
