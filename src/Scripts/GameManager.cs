@@ -12,8 +12,11 @@ public class GameManager : Node2D
     [Export] private PackedScene _spawnerScene;
     [Export] private Vector2[] _spawnerPositions;
     private bool[] _isPositionOccupied;
+    [Export] private int _spawnerNumber;
+    private int _wave = 1;
 
     public float score = 0;
+
     [Signal] public delegate void ScoreUpdated(float newScore);
 
     public override void _EnterTree()
@@ -35,11 +38,16 @@ public class GameManager : Node2D
 
     public override void _Process(float delta)
     {
+        _spawnerNumber = Mathf.Clamp(Mathf.CeilToInt(_wave/3f), 1, _spawnerPositions.Length);
         _timeSinceNewSpawner += delta;
         if (_timeSinceNewSpawner >= _spawnerSpawnTime)
         {
-            TryCreateSpawner();
+            for (int i = 0; i < _spawnerNumber; i++) 
+            {
+                TryCreateSpawner();
+            }
             _timeSinceNewSpawner = 0;
+            _wave++;
         }
     }
 
