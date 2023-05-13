@@ -17,6 +17,7 @@ run/main_scene="res://Scenes/Title.tscn"
 
 window/size/width=1920
 window/size/height=1080
+window/size/fullscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
@@ -83,6 +84,10 @@ quit_button={
 2d_physics/layer_4="Wall"
 2d_physics/layer_5="Player Hitbox"
 2d_physics/layer_6="Slash Check"
+
+[mono]
+
+project/assembly_name="Sweeper"
 
 [physics]
 
