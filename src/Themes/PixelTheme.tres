@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=2]
+[gd_resource type="Theme" load_steps=17 format=2]
 
 [ext_resource path="res://Fonts/VCR_OSD_MONO_96.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Sprites/UI/Button/button_press.png" type="Texture" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://Sprites/UI/Button/button_disable.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/UI/Button/button_focus.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/UI/Button/button_check.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/UI/Button/button_optlist.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/UI/Button/small-button_disable.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/UI/Button/small-button_check.png" type="Texture" id=9]
+[ext_resource path="res://Fonts/VCR_OSD_MONO_72.tres" type="DynamicFont" id=10]
 
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 4 )
@@ -41,6 +45,14 @@ margin_right = 28.0
 margin_top = 28.0
 margin_bottom = 28.0
 
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 128, 128 )
+margin_left = 28.0
+margin_right = 28.0
+margin_top = 20.0
+margin_bottom = 28.0
+
 [resource]
 default_font = ExtResource( 1 )
 Button/styles/disabled = SubResource( 5 )
@@ -64,3 +76,12 @@ CheckBox/icons/radio_unchecked = ExtResource( 4 )
 CheckBox/icons/radio_unchecked_disabled = ExtResource( 4 )
 CheckBox/icons/unchecked = ExtResource( 4 )
 CheckBox/icons/unchecked_disabled = ExtResource( 4 )
+OptionButton/icons/arrow = ExtResource( 7 )
+PopupMenu/constants/hseparation = 16
+PopupMenu/constants/vseparation = 24
+PopupMenu/fonts/font = ExtResource( 10 )
+PopupMenu/icons/checked = ExtResource( 9 )
+PopupMenu/icons/radio_checked = ExtResource( 9 )
+PopupMenu/icons/radio_unchecked = ExtResource( 8 )
+PopupMenu/icons/unchecked = ExtResource( 8 )
+PopupMenu/styles/panel = SubResource( 7 )
