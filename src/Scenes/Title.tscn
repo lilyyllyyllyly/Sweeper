@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Sprites/UI/Title.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/UI/MenuButton/PlayButton.tscn" type="PackedScene" id=2]
@@ -9,11 +9,16 @@
 [ext_resource path="res://Fonts/VCR_OSD_MONO_24.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Scripts/Highscore.cs" type="Script" id=8]
 [ext_resource path="res://Scripts/Highwave.cs" type="Script" id=9]
+[ext_resource path="res://Sprites/UI/transparent.png" type="Texture" id=10]
+[ext_resource path="res://Scripts/Options.cs" type="Script" id=11]
 
 [node name="Title" type="Node2D"]
 script = ExtResource( 6 )
 _quitBtnPath = NodePath("Camera2D/CanvasLayer/Menu/Buttons/QuitButton")
 _playBtnPath = NodePath("Camera2D/CanvasLayer/Menu/Buttons/PlayButton")
+_optionsBtnPath = NodePath("Camera2D/CanvasLayer/Menu/Buttons/OptionsButton")
+_optbackBtnPath = NodePath("Camera2D/CanvasLayer/Options/VBoxContainer/HBoxContainer/Back")
+_optionsMenuPath = NodePath("Camera2D/CanvasLayer/Options")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -91,7 +96,77 @@ script = ExtResource( 9 )
 [node name="Label" type="Label" parent="Camera2D/CanvasLayer"]
 margin_left = 1223.0
 margin_top = 619.0
-margin_right = 1412.0
-margin_bottom = 633.0
+margin_right = 1643.0
+margin_bottom = 641.0
 custom_fonts/font = ExtResource( 7 )
 text = "< this button does nothing lol"
+
+[node name="Options" type="TextureRect" parent="Camera2D/CanvasLayer"]
+visible = false
+margin_left = 250.0
+margin_top = 60.0
+margin_right = 1670.0
+margin_bottom = 1020.0
+texture = ExtResource( 10 )
+stretch_mode = 1
+script = ExtResource( 11 )
+_fullscreenBtnPath = NodePath("VBoxContainer/Fullscreen")
+_borderlessBtnPath = NodePath("VBoxContainer/Borderless")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/CanvasLayer/Options"]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 1320.0
+margin_bottom = 860.0
+
+[node name="OptionsText" type="Label" parent="Camera2D/CanvasLayer/Options/VBoxContainer"]
+margin_right = 1220.0
+margin_bottom = 85.0
+theme = ExtResource( 5 )
+text = "Options"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="Camera2D/CanvasLayer/Options/VBoxContainer"]
+margin_top = 89.0
+margin_right = 1220.0
+margin_bottom = 189.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Fullscreen" type="CheckBox" parent="Camera2D/CanvasLayer/Options/VBoxContainer"]
+margin_top = 193.0
+margin_right = 1220.0
+margin_bottom = 364.0
+theme = ExtResource( 5 )
+text = "Fullscreen"
+align = 1
+
+[node name="HSeparator2" type="HSeparator" parent="Camera2D/CanvasLayer/Options/VBoxContainer"]
+margin_top = 368.0
+margin_right = 1220.0
+margin_bottom = 468.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Borderless" type="CheckBox" parent="Camera2D/CanvasLayer/Options/VBoxContainer"]
+margin_top = 472.0
+margin_right = 1220.0
+margin_bottom = 643.0
+theme = ExtResource( 5 )
+text = "Borderless"
+align = 1
+
+[node name="HSeparator3" type="HSeparator" parent="Camera2D/CanvasLayer/Options/VBoxContainer"]
+margin_top = 647.0
+margin_right = 1220.0
+margin_bottom = 697.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/Options/VBoxContainer"]
+margin_top = 701.0
+margin_right = 1220.0
+margin_bottom = 829.0
+
+[node name="Back" type="Button" parent="Camera2D/CanvasLayer/Options/VBoxContainer/HBoxContainer"]
+margin_right = 280.0
+margin_bottom = 128.0
+theme = ExtResource( 5 )
+text = "Back"
