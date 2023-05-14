@@ -769,4 +769,5 @@ navpoly = SubResource( 70 )
 [connection signal="NewWave" from="GameManager" to="CanvasLayer/Wave" method="OnNewWave"]
 [connection signal="ScoreUpdated" from="GameManager" to="CanvasLayer/Score" method="OnScoreUpdated"]
 [connection signal="SpawnerNumberChanged" from="GameManager" to="CanvasLayer/Cobwebs" method="OnSpawnerNumberChanged"]
+[connection signal="PlayerDied" from="Player" to="GameManager" method="OnPlayerDeath"]
 [connection signal="PlayerReady" from="Player" to="CanvasLayer/PoisonBar" method="OnPlayerReady"]

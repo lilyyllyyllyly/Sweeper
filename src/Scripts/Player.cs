@@ -15,6 +15,7 @@ public class Player : Movable
     public float poison;
 
     [Signal] public delegate void PlayerReady(Player player);
+    [Signal] public delegate void PlayerDied();
 
     public override void _Ready()
     {
@@ -70,14 +71,8 @@ public class Player : Movable
             _healDelay = _maxHealDelay;
             if (poison >= maxPoison) 
             {
-                Die();
+                EmitSignal("PlayerDied");
             }
         }
-    }
-
-    private void Die()
-    {
-        // Just like the enemy die function, this function exists for signals later.
-        GetTree().ChangeScene("res://Scenes/Title.tscn");
     }
 }
