@@ -1,5 +1,8 @@
 src/Builds
 
+# Crash reports
+*.blob
+
 # Godot-specific ignores
 .import/
 export.cfg
