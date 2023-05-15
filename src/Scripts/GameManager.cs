@@ -44,19 +44,19 @@ public class GameManager : Node2D
         File file = new File();
 	int storedScore = 0, storedWave = 0;
 	
-	try {
+	if (file.FileExists(path)) {
             /* Read from file */
             file.Open(path, File.ModeFlags.Read);
             string[] lines = file.GetAsText().Split('\n');
             storedScore = int.Parse(lines[0].Split(',')[1]);
             storedWave  = int.Parse(lines[1].Split(',')[1]);
-	} catch {} finally { /* i hate this but i want to write to the file regardless of exceptions... */
-            /* Write to file */
-            file.Open(path, File.ModeFlags.Write);
-            file.StoreString(String.Format("score,{0}\n", score > storedScore ? score : storedScore));
-            file.StoreString(String.Format("wave,{0}",    _wave > storedWave  ? _wave : storedWave ));
-            file.Close();
 	}
+
+	/* Write to file */
+        file.Open(path, File.ModeFlags.Write);
+        file.StoreString(String.Format("score,{0}\n", score > storedScore ? score : storedScore));
+        file.StoreString(String.Format("wave,{0}",    _wave > storedWave  ? _wave : storedWave ));
+        file.Close();
     }
 
     public override void _Ready()

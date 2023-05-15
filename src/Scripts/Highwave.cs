@@ -9,11 +9,11 @@ public class Highwave : Label
 	string wave = "0";
 	File file = new File();
 
-        try {
+        if (file.FileExists(path)) {
             file.Open(path, File.ModeFlags.Read);
             string waveLine = file.GetAsText().Split('\n')[1];
 	    wave = waveLine.Split(',')[1];
-	} catch {} /* i don't like this but i will just use 0 if something goes wrong... */
+	}
 
 	Text = String.Format("Highest Wave: {0}", wave);
     }
