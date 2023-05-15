@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Sprites/UI/Title.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/UI/MenuButton/PlayButton.tscn" type="PackedScene" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://Scripts/Highwave.cs" type="Script" id=9]
 [ext_resource path="res://Sprites/UI/transparent.png" type="Texture" id=10]
 [ext_resource path="res://Scripts/Options.cs" type="Script" id=11]
-[ext_resource path="res://Scripts/ResolutionBtn.cs" type="Script" id=12]
 [ext_resource path="res://Fonts/VCR_OSD_MONO_72.tres" type="DynamicFont" id=13]
 
 [node name="Title" type="Node2D"]
@@ -106,6 +105,8 @@ stretch_mode = 1
 script = ExtResource( 11 )
 _fullscreenBtnPath = NodePath("VBoxContainer/Fullscreen")
 _borderlessBtnPath = NodePath("VBoxContainer/Borderless")
+_resolutionBtnPath = NodePath("VBoxContainer/HBoxContainer2/ResolutionBtn")
+_resolutions = PoolStringArray( "640x360", "800x450", "1280x720", "1366x768", "1600x900", "1920x1080", "2560x1440", "3840x2160" )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/CanvasLayer/Options"]
 margin_left = 100.0
@@ -169,9 +170,6 @@ text = "Resolution"
 align = 2
 icon_align = 2
 expand_icon = true
-script = ExtResource( 12 )
-_resolutions = PoolStringArray( "640x360", "800x450", "1280x720", "1366x768", "1600x900", "1920x1080", "2560x1440", "3840x2160" )
-baseResX = 1920
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/Options/VBoxContainer"]
 margin_top = 691.0
@@ -183,5 +181,3 @@ margin_right = 280.0
 margin_bottom = 128.0
 theme = ExtResource( 5 )
 text = "Back"
-
-[connection signal="item_selected" from="Camera2D/CanvasLayer/Options/VBoxContainer/HBoxContainer2/ResolutionBtn" to="Camera2D/CanvasLayer/Options/VBoxContainer/HBoxContainer2/ResolutionBtn" method="ChangeResolution"]
