@@ -6,8 +6,8 @@ public class Movable : KinematicBody2D
     private IInput _input;
     [Export] private NodePath _inputPath;
 
-    [Export] private float _maxSpeed;
-    [Export] private float _maxAccel;
+    [Export] protected float _maxSpeed;
+    [Export] protected float _maxAccel;
     public Vector2 velocity;
     public bool isMoving;
 

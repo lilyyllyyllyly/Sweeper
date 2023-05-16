@@ -34,6 +34,10 @@ public class Player : Movable
     {
         Animate();
         Heal(delta);
+
+	// Making player not get stuck on walls after gaining too much velocity
+	KinematicCollision2D col = GetLastSlideCollision();
+	if (col != null &&  col.Collider.IsClass("TileMap")) velocity = velocity.LimitLength(_maxSpeed);
     }
 
     private void Heal(float delta)
@@ -64,15 +68,11 @@ public class Player : Movable
     private void OnHit(Node body) 
     {
         Enemy enemy = body.GetNode<Enemy>(".");
-        if (enemy != null) 
-        {
-            velocity += enemy.velocity * _kbMultiplier;
-            poison += enemy.stingDmg;
-            _healDelay = _maxHealDelay;
-            if (poison >= maxPoison) 
-            {
-                EmitSignal("PlayerDied");
-            }
-        }
+        if (enemy == null) return;
+
+	velocity += enemy.velocity.Normalized() * _kbMultiplier;
+	poison += enemy.stingDmg;
+	_healDelay = _maxHealDelay;
+	if (poison >= maxPoison) EmitSignal("PlayerDied");
     }
 }
