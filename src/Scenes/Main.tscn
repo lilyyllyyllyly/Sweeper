@@ -728,7 +728,8 @@ script = ExtResource( 15 )
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource( 2 )
 _playerPath = NodePath("../Player")
-_spawnerSpawnTime = 15.0
+_spawnerSpawnTime = 10.0
+_noCobwebsReduction = 1.5
 _spawnerScene = ExtResource( 4 )
 _spawnerPositions = PoolVector2Array( -831, 298, 1438, 357, 1861, -638, -672, -339, 190, -574 )
 
