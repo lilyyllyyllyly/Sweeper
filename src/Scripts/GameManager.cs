@@ -7,6 +7,7 @@ public class GameManager : Node2D
     public Node2D player;
 
     [Export] private float _spawnerSpawnTime;
+    [Export] private float _noCobwebsReduction;
     private float _timeSinceNewSpawner;
 
     [Export] private PackedScene _spawnerScene;
@@ -145,6 +146,10 @@ public class GameManager : Node2D
     {
         _isPositionOccupied[spawner.index] = false;
         ChangeScore(score + 100);
+
+	if (CountSpawners() == 0) {
+		_timeSinceNewSpawner = Mathf.Clamp(_timeSinceNewSpawner, _spawnerSpawnTime/_noCobwebsReduction, _spawnerSpawnTime);	
+	}
 
         EmitSignal("SpawnerNumberChanged", CountSpawners());
     }
