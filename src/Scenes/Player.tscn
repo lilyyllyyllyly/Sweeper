@@ -108,6 +108,7 @@ _inputPath = NodePath("PlayerInput")
 _maxSpeed = 400.0
 _maxAccel = 50.0
 _kbMultiplier = 875.0
+_kbVelocityInfluence = 1.0
 maxPoison = 1.0
 _posionHeal = 0.2
 _maxHealDelay = 3.0

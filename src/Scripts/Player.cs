@@ -4,6 +4,7 @@ using System;
 public class Player : Movable
 {
     [Export] private float _kbMultiplier;
+    [Export] private float _kbVelocityInfluence;
     
     public AnimationPlayer anim;
     public Sprite sprite;
@@ -70,7 +71,8 @@ public class Player : Movable
         Enemy enemy = body.GetNode<Enemy>(".");
         if (enemy == null) return;
 
-	velocity += enemy.velocity.Normalized() * _kbMultiplier;
+	Vector2 influence = enemy.velocity * _kbVelocityInfluence;
+	velocity += enemy.velocity.Normalized() * _kbMultiplier + influence;
 	poison += enemy.stingDmg;
 	_healDelay = _maxHealDelay;
 	if (poison >= maxPoison) EmitSignal("PlayerDied");
