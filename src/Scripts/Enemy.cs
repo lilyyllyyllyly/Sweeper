@@ -24,11 +24,14 @@ public class Enemy : Movable
 
     [Signal] public delegate void EnemyDie(Node2D enemy);
 
+    [Export] private NodePath _animPath;
+
     public override void _Ready()
     {
         base._Ready();
         hp = _maxHealth;
         Initialize();
+	GetNode<AnimationPlayer>(_animPath).Play("SpiderMove");
     }
 
     private void Initialize()
