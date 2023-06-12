@@ -29,8 +29,12 @@ You can attack the spiders with your broom to knock them into walls, killing the
 The spiders will constantly appear from the cobwebs, so make sure to destroy them before it gets out of control! (it also gives you a lot of score!)
 
 ### UI
-!(images/start-ui.png)
+![alt text](images/start-ui.png "Game screen with labeled UI elements")
+
 \[1]: **Poison bar** - If this bar reaches 100%, you lose.
+
 \[2]: **Score** - Current score of this match.
+
 \[3]: **Wave counter** - Shows the current wave number.
+
 \[4]: **Cobweb counter** - Shows the amount of cobwebs that currently exist.
