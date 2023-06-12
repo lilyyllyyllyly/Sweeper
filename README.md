@@ -27,3 +27,10 @@ Your goal is to survive as long as possible while killing spiders and destroying
 You can attack the spiders with your broom to knock them into walls, killing them. They are knocked back futher if you charge longer.
 
 The spiders will constantly appear from the cobwebs, so make sure to destroy them before it gets out of control! (it also gives you a lot of score!)
+
+### UI
+!(images/start-ui.png)
+\[1]: **Poison bar** - If this bar reaches 100%, you lose.
+\[2]: **Score** - Current score of this match.
+\[3]: **Wave counter** - Shows the current wave number.
+\[4]: **Cobweb counter** - Shows the amount of cobwebs that currently exist.
