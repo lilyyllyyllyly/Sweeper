@@ -11,7 +11,7 @@ Alternatively, you can clone this repository with the following command:
 And open it with [Godot 3.5](https://godotengine.org/download/3.x) (make sure to use the mono version, as this project is made using C#) to export your own build.
 
 ## Execution
-After extracting the .zip file (see [Installation](installation)), you can run the game with the Sweeper_1-5-0 (.x86_64, .exe or .html) file inside the Linux, Windows or HTML5 folder depending on your platform.
+After extracting the .zip file (see [Installation](installation)), you can run the game with the **Sweeper_\<version-number>** (**.x86_64**, **.exe** or **.html**) file inside the **Linux**, **Windows** or **HTML5** folder depending on your platform (e.g.: Linux/Sweeper_1-5-0.x86_64).
 
 You can also play the game directly in your browser in the [itch.io page](https://lilyyllyyllyly.itch.io/sweeper).
 
