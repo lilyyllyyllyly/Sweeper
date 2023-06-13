@@ -38,3 +38,11 @@ The spiders will constantly appear from the cobwebs, so make sure to destroy the
 \[3]: **Wave counter** - Shows the current wave number.
 
 \[4]: **Cobweb counter** - Shows the amount of cobwebs that currently exist.
+
+## Screenshots
+![](images/gameplay/screenshot_1.png)
+![](images/gameplay/screenshot_2.png)
+![](images/gameplay/screenshot_3.png)
+![](images/gameplay/screenshot_4.png)
+![](images/gameplay/screenshot_5.png)
+![](images/gameplay/screenshot_6.png)
