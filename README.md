@@ -1,6 +1,9 @@
 # Sweeper
 An infinite arena survival game where you use a broom to whack spiders and cobwebs. Made in Godot 3.5.
 
+## Status
+I currently consider this project as being completed. I don't plan on adding new features and will only be fixing bugs. You can make issues here if you wish, but please keep in mind that I will not fix everything, since I will be working on other projects.
+
 ## Installation
 You can get a .zip file for your platform on the [releases](https://github.com/lilyyllyyllyly/Sweeper/releases) section or the [itch.io page](https://lilyyllyyllyly.itch.io/sweeper).
 
