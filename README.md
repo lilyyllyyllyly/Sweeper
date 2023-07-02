@@ -5,8 +5,9 @@ An infinite arena survival game where you use a broom to whack spiders and cobwe
 I currently consider this project finished. I don't plan on adding new features and will only be fixing bugs. You can make issues here if you wish, but please keep in mind that I will not fix everything, since I will be working on other projects.
 
 ## Licensing
-All images included in this repository use the [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license. The license is available in the LICENSE-CC-BY file.
-All other files are licensed under the MIT license. See the file LICENSE-MIT.
+All images included in this repository use the [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license. The license is available in the [LICENSE-CC-BY](LICENSE-CC-BY) file.
+
+All other files are licensed under the MIT license. See the file [LICENSE-MIT](LICENSE-MIT).
 
 ## Installation
 You can get a .zip file for your platform on the [releases](https://github.com/lilyyllyyllyly/Sweeper/releases) section or the [itch.io page](https://lilyyllyyllyly.itch.io/sweeper).
