@@ -7,7 +7,7 @@ I currently consider this project finished. I don't plan on adding new features 
 ## Licensing
 All images included in this repository use the [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license. The license is available in the [LICENSE-CC-BY](LICENSE-CC-BY) file.
 
-All other files are licensed under the MIT license. See the file [LICENSE-MIT](LICENSE-MIT).
+All other files are licensed under the MIT license. See the file [LICENSE](LICENSE).
 
 ## Installation
 You can get a .zip file for your platform on the [releases](https://github.com/lilyyllyyllyly/Sweeper/releases) section or the [itch.io page](https://lilyyllyyllyly.itch.io/sweeper).
