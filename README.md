@@ -4,6 +4,8 @@ An infinite arena survival game where you use a broom to whack spiders and cobwe
 ## Status
 I currently consider this project finished. I don't plan on adding new features and will only be fixing bugs. You can make issues here if you wish, but please keep in mind that I will not fix everything, since I will be working on other projects.
 
+If necessary, you can contact me through email: lilliana.raquel.goncalves@gmail.com
+
 ## Licensing
 All images included in this repository use the [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license. The license is available in the [LICENSE-CC-BY](LICENSE-CC-BY) file.
 
