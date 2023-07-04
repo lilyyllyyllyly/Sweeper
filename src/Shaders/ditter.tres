@@ -3,9 +3,9 @@
 [sub_resource type="Shader" id=1]
 code = "shader_type  canvas_item;
 
-const float threshold = 0.0001;
-const float ditter_size = 2.0;
-const float ditter_alpha = 0.5;
+uniform float threshold = 0.001;
+uniform float ditter_size = 2.0;
+uniform float ditter_alpha = 0.5;
 
 void fragment() {
 	COLOR = vec4(0);
@@ -21,3 +21,6 @@ void fragment() {
 
 [resource]
 shader = SubResource( 1 )
+shader_param/threshold = 0.001
+shader_param/ditter_size = 2.0
+shader_param/ditter_alpha = 0.5

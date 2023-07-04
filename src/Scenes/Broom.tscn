@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Sprites/Broom/broom.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Broom.cs" type="Script" id=2]
 [ext_resource path="res://Shaders/flash.tres" type="Material" id=3]
 [ext_resource path="res://Scenes/Slash.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Shaders/ditter.tres" type="Material" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Attack"
@@ -32,6 +33,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ null ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:material")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -62,6 +75,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [ null ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:material")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "Charge"
@@ -89,6 +114,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ null, ExtResource( 3 ), null, ExtResource( 3 ), null ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:material")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 1.2, 2.5, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 5 ) ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -118,6 +155,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [ null, ExtResource( 3 ), null, ExtResource( 3 ), null ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:material")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 1.2, 2.5, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 5 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -145,6 +194,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ null ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:material")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
 
 [node name="Broom" type="Node2D"]
 rotation = 0.00345632
@@ -158,6 +219,7 @@ _timeToMedCharge = 1.0
 _timeToFullCharge = 2.5
 
 [node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 3 )
 rotation = 0.785398
 scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
@@ -169,3 +231,9 @@ anims/AttackBack = SubResource( 2 )
 anims/Charge = SubResource( 8 )
 anims/ChargeBack = SubResource( 9 )
 anims/RESET = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Sprite"]
+material = ExtResource( 5 )
+z_index = 4096
+texture = ExtResource( 1 )
+offset = Vector2( 0, 16 )

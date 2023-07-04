@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Sprites/Player/player-idle.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.cs" type="Script" id=2]
 [ext_resource path="res://Scripts/PlayerInput.cs" type="Script" id=3]
+[ext_resource path="res://Shaders/ditter.tres" type="Material" id=4]
+[ext_resource path="res://Scripts/DitterFlip.cs" type="Script" id=5]
 
 [sub_resource type="Animation" id=2]
 resource_name = "Idle"
@@ -122,6 +124,12 @@ root_node = NodePath("../..")
 anims/Idle = SubResource( 2 )
 anims/RESET = SubResource( 4 )
 anims/Walk = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Sprite"]
+material = ExtResource( 4 )
+z_index = 4096
+texture = ExtResource( 1 )
+script = ExtResource( 5 )
 
 [node name="WallCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 41 )
