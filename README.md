@@ -2,9 +2,17 @@
 An infinite arena survival game where you use a broom to whack spiders and cobwebs. Made in Godot 3.5.
 
 ## Status
-I currently consider this project finished. I don't plan on adding new features and will only be fixing bugs. You can make issues here if you wish, but please keep in mind that I will not fix everything, since I will be working on other projects.
+~~I currently consider this project finished. I don't plan on adding new features and will only be fixing bugs. You can make issues here if you wish, but please keep in mind that I will not fix everything, since I will be working on other projects.~~
 
-If necessary, you can contact me through email: lilliana.raquel.goncalves@gmail.com
+After releasing the game and getting some feedback from friends, I have regained the motivation to work on this project. I'm currently working on a few important issues with the game and will soon be adding new features to make the gameplay loop a bit more interesting, so if you find any bugs or have a suggestion, please do let me know!
+
+**Current planned features:**
+- A shop that appears every few waves, giving you time to rest and a choice of a few items to help you survive.
+- New spider types (what they will do has not been decided yet).
+
+You can suggest features and report bugs through the [itch.io page](https://lilyyllyyllyly.itch.io/sweeper), or you can make issues and pull requests here on github. If you choose the latter, please keep in mind that I'm very new to this, so I don't know how everything works yet.
+
+If necessary for any reason, you can contact me through email: lilliana.raquel.goncalves@gmail.com (I might take a while to respond)
 
 ## Licensing
 All images included in this repository use the [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license. The license is available in the [LICENSE-CC-BY](LICENSE-CC-BY) file.
