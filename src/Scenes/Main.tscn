@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=2]
+[gd_scene load_steps=83 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/GameManager.cs" type="Script" id=2]
@@ -20,6 +20,9 @@
 [ext_resource path="res://Sprites/Tilemaps/Walls.png" type="Texture" id=18]
 [ext_resource path="res://Sprites/floor_tilemap.png" type="Texture" id=19]
 [ext_resource path="res://Sprites/Props/Kitchen.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/UI/transparent.png" type="Texture" id=21]
+[ext_resource path="res://Scripts/Pause.cs" type="Script" id=22]
+[ext_resource path="res://Fonts/VCR_OSD_MONO_48.tres" type="DynamicFont" id=23]
 
 [sub_resource type="ConvexPolygonShape2D" id=101]
 points = PoolVector2Array( 18, 0, 126, 0, 128, 32, 16, 32 )
@@ -1134,6 +1137,47 @@ theme = ExtResource( 6 )
 text = "Cobwebs: 1"
 align = 2
 script = ExtResource( 15 )
+
+[node name="Pause" type="TextureRect" parent="CanvasLayer"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 21 )
+stretch_mode = 1
+script = ExtResource( 22 )
+
+[node name="PausedText" type="Label" parent="CanvasLayer/Pause"]
+anchor_left = 0.5
+anchor_top = 0.1
+anchor_right = 0.5
+anchor_bottom = 0.1
+margin_left = -168.0
+margin_right = 168.0
+margin_bottom = 85.0
+theme = ExtResource( 6 )
+text = "Paused"
+align = 1
+valign = 1
+
+[node name="UnpauseText" type="Label" parent="CanvasLayer/Pause"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -168.0
+margin_top = -42.5
+margin_right = 168.0
+margin_bottom = 42.5
+grow_horizontal = 2
+theme = ExtResource( 6 )
+custom_fonts/font = ExtResource( 23 )
+text = "Press Esc/P to unpause
+
+Press Shift+Q to go to the main menu
+(YOU WILL LOSE YOUR SCORE)"
+align = 1
+valign = 1
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource( 2 )

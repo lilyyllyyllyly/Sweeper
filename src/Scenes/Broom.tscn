@@ -219,7 +219,6 @@ _timeToMedCharge = 1.0
 _timeToFullCharge = 2.5
 
 [node name="Sprite" type="Sprite" parent="."]
-material = ExtResource( 3 )
 rotation = 0.785398
 scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
