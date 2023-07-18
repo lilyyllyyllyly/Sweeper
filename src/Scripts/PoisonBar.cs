@@ -18,6 +18,7 @@ public class PoisonBar : ProgressBar
 
     public override void _Process(float delta)
     {
+	if (!IsInstanceValid(_currPlayer)) return;
         float poisonNormal = (_currPlayer.poison/_currPlayer.maxPoison);
         _bar.Value = poisonNormal * 100;
     }
