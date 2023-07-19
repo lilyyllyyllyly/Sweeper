@@ -148,4 +148,4 @@ shape = SubResource( 5 )
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource( 3 )
 
-[connection signal="body_entered" from="Hitbox" to="." method="OnHit"]
+[connection signal="area_entered" from="Hitbox" to="." method="OnHit"]

@@ -66,9 +66,9 @@ public class Player : Movable
         }
     }
 
-    private void OnHit(Node body) 
+    private void OnHit(Area2D area) 
     {
-        Enemy enemy = body.GetNode<Enemy>(".");
+        Enemy enemy = area.GetNode<Enemy>("..");
         if (enemy == null) return;
 
 	Vector2 influence = enemy.velocity * _kbVelocityInfluence;
