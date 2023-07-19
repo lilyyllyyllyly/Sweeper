@@ -148,4 +148,7 @@ shape = SubResource( 5 )
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource( 3 )
 
+[node name="FootPos" type="Node2D" parent="."]
+position = Vector2( 0, 48 )
+
 [connection signal="area_entered" from="Hitbox" to="." method="OnHit"]

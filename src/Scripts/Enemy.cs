@@ -65,7 +65,10 @@ public class Enemy : Movable
             target = null;
         }
 
-        Vector2 targetPos = IsInstanceValid(target) ? target.Position : Position;
+	Vector2 targetPos = Position;
+	if (IsInstanceValid(target)) {
+		targetPos = target.GetNode<Node2D>("FootPos").GlobalPosition;
+	}
         navAgent.SetTargetLocation(targetPos);
     }
 
