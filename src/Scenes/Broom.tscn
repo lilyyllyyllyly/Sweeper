@@ -35,7 +35,7 @@ tracks/1/keys = {
 "values": [ null ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:material")
+tracks/2/path = NodePath("Ditter:material")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -76,7 +76,7 @@ tracks/1/keys = {
 "values": [ null ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:material")
+tracks/2/path = NodePath("Ditter:material")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -116,7 +116,7 @@ tracks/1/keys = {
 "values": [ null, ExtResource( 3 ), null, ExtResource( 3 ), null ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:material")
+tracks/2/path = NodePath("Ditter:material")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -156,7 +156,7 @@ tracks/1/keys = {
 "values": [ null, ExtResource( 3 ), null, ExtResource( 3 ), null ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:material")
+tracks/2/path = NodePath("Ditter:material")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -195,7 +195,7 @@ tracks/1/keys = {
 "values": [ null ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:material")
+tracks/2/path = NodePath("Ditter:material")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -231,7 +231,7 @@ anims/Charge = SubResource( 8 )
 anims/ChargeBack = SubResource( 9 )
 anims/RESET = SubResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="Sprite"]
+[node name="Ditter" type="Sprite" parent="Sprite"]
 material = ExtResource( 5 )
 z_index = 4096
 texture = ExtResource( 1 )

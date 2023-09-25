@@ -125,7 +125,7 @@ anims/Idle = SubResource( 2 )
 anims/RESET = SubResource( 4 )
 anims/Walk = SubResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="Sprite"]
+[node name="Ditter" type="Sprite" parent="Sprite"]
 material = ExtResource( 4 )
 z_index = 4096
 texture = ExtResource( 1 )
