@@ -47,8 +47,8 @@ public class Options : TextureRect
 	    string[] lines = file.GetAsText().Split('\n');
 
 	    /* Set button state */
-	    _fullscreenBtn.SetPressed(lines[0].Split(',')[1] == "True");
-	    _borderlessBtn.SetPressed(lines[1].Split(',')[1] == "True");
+	    _fullscreenBtn.Pressed = lines[0].Split(',')[1] == "True";
+	    _borderlessBtn.Pressed = lines[1].Split(',')[1] == "True";
 	    resolution = int.Parse(lines[2].Split(',')[1]);
 	    _resolutionBtn.Select(resolution);
 
@@ -74,14 +74,14 @@ public class Options : TextureRect
 
     private void OnFullscreen()
     {
-	fullscreen = GetNode<CheckBox>(_fullscreenBtnPath).IsPressed();
+	fullscreen = GetNode<CheckBox>(_fullscreenBtnPath).Pressed == true;
 	OS.WindowFullscreen = fullscreen;
 	SaveOptions();
     }
 
     private void OnBorderless()
     {
-	borderless = GetNode<CheckBox>(_borderlessBtnPath).IsPressed();
+	borderless = GetNode<CheckBox>(_borderlessBtnPath).Pressed == true;
 	OS.WindowBorderless = borderless;
 	SaveOptions();
     }
