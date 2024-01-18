@@ -22,6 +22,8 @@ public class Broom : Node2D
     [Export] private float _attackDelay;
     private float _timeSinceAttack;
 
+    [Signal] public delegate void Swept(int intensity);
+
     public override void _Ready()
     {
         Initialize();
@@ -57,9 +59,9 @@ public class Broom : Node2D
         }
 
         // All of this only happens when the attack button is released and the attack delay passed:
-
         _timeSinceAttack = 0;
 
+	// Playing correct animation for flip state
         if (!_isFlipped) 
         {
             _anim.Play("Attack");
@@ -69,19 +71,32 @@ public class Broom : Node2D
             _anim.Play("AttackBack");
         }
 
-        SpawnSlash();
+	// Getting charge level
+	int slashCharge = 0;
+        if (_charge > _timeToMedCharge) 
+        {
+            slashCharge = 1;
+        }
+        if (_charge > _timeToFullCharge) 
+        {
+            slashCharge = 2;
+        }
 
-        _isFlipped = !_isFlipped;
+        SpawnSlash(slashCharge);
+	EmitSignal("Swept", slashCharge+1);
+
+        _isFlipped = !_isFlipped; // Flipping broom after attacking
         _charge = 0;
     }
 
-    private void SpawnSlash()
+    private void SpawnSlash(int charge)
     {
         // Instancing
 
         Node newSlash = _slashScene.Instance();
         Node2D slashNode = newSlash.GetNode<Node2D>(".");
         Slash slash = newSlash.GetNode<Slash>(".");
+	slash.charge = charge;
 
         // Rotating and Repositioning
 
@@ -91,16 +106,6 @@ public class Broom : Node2D
         Vector2 rotatedPos = Utils.RotateVector(slashPos, rot);
         slashNode.Position = Position + rotatedPos;
 
-        // Passing Current Charge
-
-        if (_charge > _timeToMedCharge) 
-        {
-            slash.charge = 1;
-        }
-        if (_charge > _timeToFullCharge) 
-        {
-            slash.charge = 2;
-        }
 
         slash.SetChargeVars();
         

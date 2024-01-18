@@ -22,6 +22,9 @@ public class GameManager : Node2D
     [Signal] public delegate void NewWave(int wave);
     [Signal] public delegate void SpawnerNumberChanged(int spawners);
 
+    [Export] private NodePath _cameraPath;
+    private Camera _camera;
+
     public override void _EnterTree()
     {
         Initialize();
@@ -31,6 +34,7 @@ public class GameManager : Node2D
     {
         _isPositionOccupied = new bool[_spawnerPositions.Length];
         player = GetNode<Node2D>(_playerPath);
+	_camera = GetNode<Camera>(_cameraPath);
     }
 
     private void OnPlayerDeath()
@@ -140,6 +144,7 @@ public class GameManager : Node2D
     private void OnEnemyDie(Node2D enemy) 
     {
         ChangeScore(score + 1);
+	_camera.Slowdown();
     }
 
     private void OnSpawnerDead(Spawner spawner)

@@ -16,6 +16,7 @@ public class Enemy : Movable
     private List<Area2D> repelAreas = new List<Area2D>();
 
     private float stun = 0;
+    private float lastStun = 0;
     [Export] private int _maxHealth;
     public int hp;
     private int nextDmg;
@@ -23,15 +24,18 @@ public class Enemy : Movable
     [Export] public float stingDmg;
 
     [Signal] public delegate void EnemyDie(Node2D enemy);
+    [Signal] public delegate void EnemyDamaged();
 
     [Export] private NodePath _animPath;
+    private AnimationPlayer _anim;
 
     public override void _Ready()
     {
         base._Ready();
         hp = _maxHealth;
         Initialize();
-	GetNode<AnimationPlayer>(_animPath).Play("SpiderMove");
+	_anim = GetNode<AnimationPlayer>(_animPath);
+	_anim.Play("SpiderMove");
     }
 
     private void Initialize()
@@ -96,21 +100,18 @@ public class Enemy : Movable
         }
     }
 
-    private void Damage(int dmg)
+    private async void Damage(int dmg)
     {
-        // This is a function because i'll probably want to make it a signal later to make implementing
-        // sound/visual effects and stuff easier when i do that (same for the die function)
         hp -= dmg;
-        if (hp <= 0) 
-        {
-            Die();
-        }
+        EmitSignal("EnemyDamaged");
+	await ToSignal(_anim, "DamageFinished");
+	if (hp <= 0) Die();
     }
 
-    private void Die()
+    private async void Die()
     {
-        QueueFree();
         EmitSignal("EnemyDie", GetNode<Node2D>("."));
+        QueueFree();
     }
 
     private void Repel() 

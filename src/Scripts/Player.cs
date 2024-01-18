@@ -17,6 +17,7 @@ public class Player : Movable
 
     [Signal] public delegate void PlayerReady(Player player);
     [Signal] public delegate void PlayerDied();
+    [Signal] public delegate void PlayerDamaged();
 
     public override void _Ready()
     {
@@ -75,6 +76,7 @@ public class Player : Movable
 	velocity += enemy.velocity.Normalized() * _kbMultiplier + influence;
 	poison += enemy.stingDmg;
 	_healDelay = _maxHealDelay;
+	EmitSignal("PlayerDamaged");
 	if (poison >= maxPoison) EmitSignal("PlayerDied");
     }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/GameManager.cs" type="Script" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://Sprites/UI/transparent.png" type="Texture" id=21]
 [ext_resource path="res://Scripts/Pause.cs" type="Script" id=22]
 [ext_resource path="res://Fonts/VCR_OSD_MONO_48.tres" type="DynamicFont" id=23]
+[ext_resource path="res://Scripts/Camera.cs" type="Script" id=24]
 
 [sub_resource type="ConvexPolygonShape2D" id=101]
 points = PoolVector2Array( 18, 0, 126, 0, 128, 32, 16, 32 )
@@ -1186,6 +1187,7 @@ _spawnerSpawnTime = 10.0
 _noCobwebsReduction = 1.5
 _spawnerScene = ExtResource( 4 )
 _spawnerPositions = PoolVector2Array( -899, 451, 1473, 436, 1861, -638, -672, -339, 190, -574 )
+_cameraPath = NodePath("../Player/Camera2D")
 
 [node name="Props" type="TileMap" parent="."]
 scale = Vector2( 6, 6 )
@@ -1232,6 +1234,15 @@ tile_data = PoolIntArray( -1507302, 3, 0, -196613, 0, 0, -196612, 0, 0, -196611,
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
+script = ExtResource( 24 )
+_shakeIntensityScaling = 2.5
+_sweepShakeMult = 1.1
+_damageShakeIntensity = 2.0
+_shakeTimeMult = 0.1
+_shakeTimeScaling = 1.0
+_ffNumber = 1
+_slowdownPerKill = 0.05
+_slowdownCap = 0.3
 
 [node name="Broom" parent="." instance=ExtResource( 3 )]
 rotation = -0.00348404
@@ -1245,5 +1256,7 @@ navpoly = SubResource( 70 )
 [connection signal="NewWave" from="GameManager" to="CanvasLayer/Wave" method="OnNewWave"]
 [connection signal="ScoreUpdated" from="GameManager" to="CanvasLayer/Score" method="OnScoreUpdated"]
 [connection signal="SpawnerNumberChanged" from="GameManager" to="CanvasLayer/Cobwebs" method="OnSpawnerNumberChanged"]
+[connection signal="PlayerDamaged" from="Player" to="Player/Camera2D" method="OnPlayerDamaged"]
 [connection signal="PlayerDied" from="Player" to="GameManager" method="OnPlayerDeath"]
 [connection signal="PlayerReady" from="Player" to="CanvasLayer/PoisonBar" method="OnPlayerReady"]
+[connection signal="Swept" from="Broom" to="Player/Camera2D" method="OnBroomSwept"]
