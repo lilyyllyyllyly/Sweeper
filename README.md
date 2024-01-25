@@ -4,11 +4,7 @@ An infinite arena survival game where you use a broom to whack spiders and cobwe
 ## Status
 I currently consider this project finished. I don't plan on adding new features and will only be fixing bugs. You can make issues here if you wish, but please keep in mind that I will not fix everything, since I will be working on other projects.
 
-**Current planned features:**
-- A shop that appears every few waves, giving you time to rest and a choice of a few items to help you survive.
-- New spider types (what they will do has not been decided yet).
-
-You can suggest features and report bugs through the [itch.io page](https://lilyyllyyllyly.itch.io/sweeper), or you can make issues and pull requests here on github. If you choose the latter, please keep in mind that I'm very new to this, so I don't know how everything works yet.
+You can report bugs through the [itch.io page](https://lilyyllyyllyly.itch.io/sweeper), or you can make issues and pull requests here on github. If you choose the latter, please keep in mind that I'm very new to this, so I don't know how everything works yet.
 
 If necessary for any reason, you can contact me through email: lilliana.raquel.goncalves@gmail.com (I might take a while to respond)
 
