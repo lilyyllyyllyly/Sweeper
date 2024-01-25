@@ -2,9 +2,7 @@
 An infinite arena survival game where you use a broom to whack spiders and cobwebs. Made in Godot 3.5.
 
 ## Status
-~~I currently consider this project finished. I don't plan on adding new features and will only be fixing bugs. You can make issues here if you wish, but please keep in mind that I will not fix everything, since I will be working on other projects.~~
-
-After releasing the game and getting some feedback from friends, I have regained the motivation to work on this project. I'm currently working on a few important issues with the game and will soon be adding new features to make the gameplay loop a bit more interesting, so if you find any bugs or have a suggestion, please do let me know!
+I currently consider this project finished. I don't plan on adding new features and will only be fixing bugs. You can make issues here if you wish, but please keep in mind that I will not fix everything, since I will be working on other projects.
 
 **Current planned features:**
 - A shop that appears every few waves, giving you time to rest and a choice of a few items to help you survive.
